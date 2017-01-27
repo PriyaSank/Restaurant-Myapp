@@ -11,7 +11,7 @@ public class ConnectionUtil {
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		ds.setUsername("root");
 		ds.setPassword("priyasankar");
-		ds.setUrl("jdbc:mysql://localhost:3306/pri");
+		ds.setUrl("jdbc:mysql://localhost:3306/restuarant");
 		return ds;
 	}
 
