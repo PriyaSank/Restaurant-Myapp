@@ -13,7 +13,7 @@ public class TestProcedure {
 //		System.out.println(status);
 
 	GetCustomerOrder sam=new GetCustomerOrder();
-		String f=sam.placeOrder(3, "Coffee", "4");
+		String f=sam.placeOrder(3, "Coffee,hf", "4,2");
 		System.out.println(f);
 	}
 }

@@ -19,11 +19,11 @@ public class CancelOrder {
         SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_CANCEL_ORDER_V5")
                 .declareParameters(
                 		new SqlParameter("i_seat_no", Types.INTEGER),
-                        new SqlOutParameter("message", Types.VARCHAR));
+                        new SqlOutParameter("RES", Types.VARCHAR));
         call.setAccessCallParameterMetaData(false);
         SqlParameterSource in = new MapSqlParameterSource() .addValue("i_seat_no", seat_no);
         Map<String, Object> execute = call.execute(in);
-        String status = (String) execute.get("message");
+        String status = (String) execute.get("RES");
         return status;
  
     }
