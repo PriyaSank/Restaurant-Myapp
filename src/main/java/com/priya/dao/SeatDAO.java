@@ -15,7 +15,7 @@ public class SeatDAO {
 		final String sql = "insert into seat_configuration(ID) values(?)";
 		final Object[] params = { seatNo };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	public void updateSeatStatus(SeatConfigurationModel seat) {
@@ -23,7 +23,7 @@ public class SeatDAO {
 		final String sql = "update seat_configuration set STATUS=? where ID=?";
 		final Object[] params = { seat.getStatus(), seat.getId() };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	public void delete(int id) {
@@ -31,7 +31,6 @@ public class SeatDAO {
 		final String sql = "delete from seat_configuration where id=?";
 		final Object[] params = { id };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 

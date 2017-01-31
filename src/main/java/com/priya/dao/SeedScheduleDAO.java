@@ -15,7 +15,7 @@ public class SeedScheduleDAO {
 		final String sql = "insert into seed_schedule(ID,NAME,FROM_TIME,TO_TIME) values(?,?,?,?)";
 		final Object[] params = { seed.getId(), seed.getName(), seed.getFromTime(), seed.getToTime() };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	public void updateTimings(SeedScheduleModel seed) {
@@ -23,7 +23,6 @@ public class SeedScheduleDAO {
 		final String sql = "update seed_schedule SET FROM_TIME=? ,TO_TIME=? where ID=?";
 		final Object[] params = { seed.getFromTime(), seed.getToTime(), seed.getId() };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 
@@ -32,7 +31,6 @@ public class SeedScheduleDAO {
 		final String sql = "update seed_schedule SET NAME=? where ID=?";
 		final Object[] params = { seed.getName(), seed.getId() };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 
@@ -41,7 +39,6 @@ public class SeedScheduleDAO {
 		final String sql = "delete from seed_schedule where id=?";
 		final Object[] params = { id };
 		jdbcTemplate.update(sql, params);
-	
 
 	}
 

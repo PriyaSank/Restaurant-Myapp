@@ -18,7 +18,6 @@ public class OrderFoodDetailsDAO {
 		final String sql = "update order_food_details SET ORDER_STATUS=? where ORDER_ID=?";
 		final Object[] params = { orderFood.getOrderStatus(), orderFood.getOrder().getId() };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 

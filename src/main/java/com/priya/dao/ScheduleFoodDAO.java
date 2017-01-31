@@ -17,7 +17,7 @@ public class ScheduleFoodDAO {
 		final String sql = "insert into schedule_food_relation(SCHEDULE_ID,FOOD_ID,FOOD_COUNT) values(?,?,?)";
 		final Object[] params = { scfood.getSch().getId(), scfood.getFood().getId(), scfood.getFoodCount() };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	public void updateScheduleId(ScheduleFoodModel scfood) {
@@ -25,7 +25,6 @@ public class ScheduleFoodDAO {
 		final String sql = "update schedule_food_relation SET SCHEDULE_ID=? where ID=?";
 		final Object[] params = { scfood.getSch().getId(), scfood.getId() };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 
@@ -33,8 +32,7 @@ public class ScheduleFoodDAO {
 
 		final String sql = "update schedule_food_relation SET FOOD_ID=? where ID=?";
 		final Object[] params = { scfood.getFood().getId(), scfood.getId() };
-	    jdbcTemplate.update(sql, params);
-		
+		jdbcTemplate.update(sql, params);
 
 	}
 
@@ -43,7 +41,6 @@ public class ScheduleFoodDAO {
 		final String sql = "update schedule_food_relation SET FOOD_COUNT=? where ID=?";
 		final Object[] params = { scfood.getFoodCount(), scfood.getId() };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 
@@ -52,7 +49,6 @@ public class ScheduleFoodDAO {
 		final String sql = "delete from schedule_food_relation where id=?";
 		final Object[] params = { id };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 

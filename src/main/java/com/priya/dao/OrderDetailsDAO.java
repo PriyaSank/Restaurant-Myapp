@@ -15,8 +15,8 @@ public class OrderDetailsDAO {
 
 		final String sql = "insert into order_details(SEAT_NO) values(?)";
 		final Object[] params = { seatno };
-	    jdbcTemplate.update(sql, params);
-		
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	public void updateOrderStatus(OrderDetailsModel order) {
@@ -24,7 +24,6 @@ public class OrderDetailsDAO {
 		final String sql = "update order_details SET STATUS=? where ID=?";
 		final Object[] params = { order.getStatus(), order.getId() };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 
@@ -33,7 +32,6 @@ public class OrderDetailsDAO {
 		final String sql = "delete from order_details where id=?";
 		final Object[] params = { id };
 		jdbcTemplate.update(sql, params);
-		
 
 	}
 
