@@ -1,5 +1,7 @@
 package com.priya.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -45,26 +47,25 @@ public class SeedScheduleDAO {
 	public List<SeedScheduleModel> listAllScheduleData() {
 		final String sql = "select ID,NAME,FROM_TIME,TO_TIME from seed_schedule";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			SeedScheduleModel seed = new SeedScheduleModel();
-			seed.setId(rs.getInt("ID"));
-			seed.setName(rs.getString("NAME"));
-			seed.setFromTime(rs.getTime("FROM_TIME").toLocalTime());
-			seed.setToTime(rs.getTime("TO_TIME").toLocalTime());
-			return seed;
+			return convert(rs);
 		});
 
 	}
 
+	private SeedScheduleModel convert(ResultSet rs) throws SQLException {
+		SeedScheduleModel seed = new SeedScheduleModel();
+		seed.setId(rs.getInt("ID"));
+		seed.setName(rs.getString("NAME"));
+		seed.setFromTime(rs.getTime("FROM_TIME").toLocalTime());
+		seed.setToTime(rs.getTime("TO_TIME").toLocalTime());
+		return seed;
+	}
+	
 	public SeedScheduleModel listParticularScheduleData(int id) {
 		String sql = "select ID,NAME,FROM_TIME,TO_TIME from seed_schedule where ID=?";
 		Object[] params = { id };
 		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
-			SeedScheduleModel seed = new SeedScheduleModel();
-			seed.setId(rs.getInt("ID"));
-			seed.setName(rs.getString("NAME"));
-			seed.setFromTime(rs.getTime("FROM_TIME").toLocalTime());
-			seed.setToTime(rs.getTime("TO_TIME").toLocalTime());
-			return seed;
+			return convert(rs);
 		});
 	}
 }
