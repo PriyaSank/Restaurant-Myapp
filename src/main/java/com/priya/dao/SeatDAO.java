@@ -12,32 +12,31 @@ public class SeatDAO {
 
 	public void save(int seatNo) {
 
-		String sql = "insert into seat_configuration(ID) values(?)";
-		Object[] params = { seatNo };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows inserted: " + rows);
+		final String sql = "insert into seat_configuration(ID) values(?)";
+		final Object[] params = { seatNo };
+		jdbcTemplate.update(sql, params);
+		
 	}
 
 	public void updateSeatStatus(SeatConfigurationModel seat) {
 
-		String sql = "update seat_configuration set STATUS=? where ID=?";
-		Object[] params = { seat.getStatus(), seat.getId() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
-
+		final String sql = "update seat_configuration set STATUS=? where ID=?";
+		final Object[] params = { seat.getStatus(), seat.getId() };
+		jdbcTemplate.update(sql, params);
+		
 	}
 
 	public void delete(int id) {
 
-		String sql = "delete from seat_configuration where id=?";
-		Object[] params = { id };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows deleted: " + rows);
+		final String sql = "delete from seat_configuration where id=?";
+		final Object[] params = { id };
+		jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public List<SeatConfigurationModel> listAllSeatData() {
-		String sql = "select * from seat_configuration";
+		final String sql = "select * from seat_configuration";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
 			SeatConfigurationModel seat = new SeatConfigurationModel();
 			seat.setId(rs.getInt("ID"));

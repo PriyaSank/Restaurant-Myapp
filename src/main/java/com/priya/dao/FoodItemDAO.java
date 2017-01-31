@@ -16,7 +16,7 @@ public class FoodItemDAO {
 		final String sql = "insert into food_item(ID,NAME,PRICE) values(?,?,?)";
 		final Object[] params = { food.getId(), food.getName(), food.getPrice() };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	public void updateFoodPrice(FoodItemModel food) {
@@ -24,7 +24,7 @@ public class FoodItemDAO {
 		final String sql = "update food_item set SET PRICE=? where ID=?";
 		final Object[] params = { food.getPrice(), food.getId() };
 		jdbcTemplate.update(sql, params);
-	
+
 	}
 
 	public void updateItemName(FoodItemModel food) {
@@ -32,7 +32,7 @@ public class FoodItemDAO {
 		final String sql = "update food_item set SET NAME=? where ID=?";
 		final Object[] params = { food.getId(), food.getName() };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	public void delete(int id) {
@@ -40,7 +40,7 @@ public class FoodItemDAO {
 		final String sql = "delete from food_item where id=?";
 		final Object[] params = { id };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	public List<FoodItemModel> listAllItemsData() {

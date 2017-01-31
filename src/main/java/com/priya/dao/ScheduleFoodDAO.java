@@ -14,50 +14,50 @@ public class ScheduleFoodDAO {
 
 	public void save(ScheduleFoodModel scfood) {
 
-		String sql = "insert into schedule_food_relation(SCHEDULE_ID,FOOD_ID,FOOD_COUNT) values(?,?,?)";
-		Object[] params = { scfood.getSch().getId(), scfood.getFood().getId(), scfood.getFoodCount() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows inserted: " + rows);
+		final String sql = "insert into schedule_food_relation(SCHEDULE_ID,FOOD_ID,FOOD_COUNT) values(?,?,?)";
+		final Object[] params = { scfood.getSch().getId(), scfood.getFood().getId(), scfood.getFoodCount() };
+		jdbcTemplate.update(sql, params);
+		
 	}
 
 	public void updateScheduleId(ScheduleFoodModel scfood) {
 
-		String sql = "update schedule_food_relation SET SCHEDULE_ID=? where ID=?";
-		Object[] params = { scfood.getSch().getId(), scfood.getId() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		final String sql = "update schedule_food_relation SET SCHEDULE_ID=? where ID=?";
+		final Object[] params = { scfood.getSch().getId(), scfood.getId() };
+		jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public void updateFoodId(ScheduleFoodModel scfood) {
 
-		String sql = "update schedule_food_relation SET FOOD_ID=? where ID=?";
-		Object[] params = { scfood.getFood().getId(), scfood.getId() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		final String sql = "update schedule_food_relation SET FOOD_ID=? where ID=?";
+		final Object[] params = { scfood.getFood().getId(), scfood.getId() };
+	    jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public void updateFoodCount(ScheduleFoodModel scfood) {
 
-		String sql = "update schedule_food_relation SET FOOD_COUNT=? where ID=?";
-		Object[] params = { scfood.getFoodCount(), scfood.getId() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		final String sql = "update schedule_food_relation SET FOOD_COUNT=? where ID=?";
+		final Object[] params = { scfood.getFoodCount(), scfood.getId() };
+		jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public void delete(int id) {
 
-		String sql = "delete from schedule_food_relation where id=?";
-		Object[] params = { id };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows deleted: " + rows);
+		final String sql = "delete from schedule_food_relation where id=?";
+		final Object[] params = { id };
+		jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public List<ScheduleFoodModel> listAllData() {
-		String sql = "select ID,SCHEDULE_ID,FOOD_ID,FOOD_COUNT from schedule_food_relation";
+		final String sql = "select ID,SCHEDULE_ID,FOOD_ID,FOOD_COUNT from schedule_food_relation";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
 			ScheduleFoodModel scfood = new ScheduleFoodModel();
 			scfood.setId(rs.getInt("ID"));

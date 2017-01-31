@@ -12,41 +12,41 @@ public class SeedScheduleDAO {
 
 	public void save(SeedScheduleModel seed) {
 
-		String sql = "insert into seed_schedule(ID,NAME,FROM_TIME,TO_TIME) values(?,?,?,?)";
-		Object[] params = { seed.getId(), seed.getName(), seed.getFromTime(), seed.getToTime() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows inserted: " + rows);
+		final String sql = "insert into seed_schedule(ID,NAME,FROM_TIME,TO_TIME) values(?,?,?,?)";
+		final Object[] params = { seed.getId(), seed.getName(), seed.getFromTime(), seed.getToTime() };
+		jdbcTemplate.update(sql, params);
+		
 	}
 
 	public void updateTimings(SeedScheduleModel seed) {
 
-		String sql = "update seed_schedule SET FROM_TIME=? ,TO_TIME=? where ID=?";
-		Object[] params = { seed.getFromTime(), seed.getToTime(), seed.getId() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		final String sql = "update seed_schedule SET FROM_TIME=? ,TO_TIME=? where ID=?";
+		final Object[] params = { seed.getFromTime(), seed.getToTime(), seed.getId() };
+		jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public void updateScheduleName(SeedScheduleModel seed) {
 
-		String sql = "update seed_schedule SET NAME=? where ID=?";
-		Object[] params = { seed.getName(), seed.getId() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		final String sql = "update seed_schedule SET NAME=? where ID=?";
+		final Object[] params = { seed.getName(), seed.getId() };
+		jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public void delete(int id) {
 
-		String sql = "delete from seed_schedule where id=?";
-		Object[] params = { id };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows deleted: " + rows);
+		final String sql = "delete from seed_schedule where id=?";
+		final Object[] params = { id };
+		jdbcTemplate.update(sql, params);
+	
 
 	}
 
 	public List<SeedScheduleModel> listAllScheduleData() {
-		String sql = "select ID,NAME,FROM_TIME,TO_TIME from seed_schedule";
+		final String sql = "select ID,NAME,FROM_TIME,TO_TIME from seed_schedule";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
 			SeedScheduleModel seed = new SeedScheduleModel();
 			seed.setId(rs.getInt("ID"));

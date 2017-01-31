@@ -15,15 +15,15 @@ public class OrderFoodDetailsDAO {
 
 	public void updateStatus(OrderFoodDetailsModel orderFood) {
 
-		String sql = "update order_food_details SET ORDER_STATUS=? where ORDER_ID=?";
-		Object[] params = { orderFood.getOrderStatus(), orderFood.getOrder().getId() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		final String sql = "update order_food_details SET ORDER_STATUS=? where ORDER_ID=?";
+		final Object[] params = { orderFood.getOrderStatus(), orderFood.getOrder().getId() };
+		jdbcTemplate.update(sql, params);
+		
 
 	}
 
 	public List<OrderFoodDetailsModel> listAllData() {
-		String sql = "select * from order_food_details";
+		final String sql = "select * from order_food_details";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
 			OrderFoodDetailsModel orderFood = new OrderFoodDetailsModel();
 			orderFood.setId(rs.getInt("ID"));
@@ -42,8 +42,8 @@ public class OrderFoodDetailsDAO {
 	}
 
 	public OrderFoodDetailsModel listParticularData(int id) {
-		String sql = "select * from order_food_details where ID=?";
-		Object[] params = { id };
+		final String sql = "select * from order_food_details where ID=?";
+		final Object[] params = { id };
 		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
 			OrderFoodDetailsModel orderFood = new OrderFoodDetailsModel();
 			orderFood.setId(rs.getInt("ID"));
@@ -61,8 +61,8 @@ public class OrderFoodDetailsDAO {
 	}
 
 	public List<OrderFoodDetailsModel> listOrderData(int id) {
-		String sql = "select * from order_food_details where ORDER_ID=?";
-		Object[] params = { id };
+		final String sql = "select * from order_food_details where ORDER_ID=?";
+		final Object[] params = { id };
 		return jdbcTemplate.query(sql, params, (rs, rowNum) -> {
 			OrderFoodDetailsModel orderFood = new OrderFoodDetailsModel();
 			orderFood.setId(rs.getInt("ID"));
