@@ -46,9 +46,7 @@ public class SeedScheduleDAO {
 
 	public List<SeedScheduleModel> listAllScheduleData() {
 		final String sql = "select ID,NAME,FROM_TIME,TO_TIME from seed_schedule";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.query(sql, (rs, rowNum) -> convert(rs));
 
 	}
 
@@ -64,8 +62,6 @@ public class SeedScheduleDAO {
 	public SeedScheduleModel listParticularScheduleData(int id) {
 		String sql = "select ID,NAME,FROM_TIME,TO_TIME from seed_schedule where ID=?";
 		Object[] params = { id };
-		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> convert(rs));
 	}
 }
