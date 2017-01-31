@@ -25,9 +25,7 @@ public class OrderFoodDetailsDAO {
 
 	public List<OrderFoodDetailsModel> listAllData() {
 		final String sql = "select * from order_food_details";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.query(sql, (rs, rowNum) -> convert(rs));
 
 	}
 
@@ -49,17 +47,13 @@ public class OrderFoodDetailsDAO {
 	public OrderFoodDetailsModel listParticularData(int id) {
 		final String sql = "select * from order_food_details where ID=?";
 		final Object[] params = { id };
-		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> convert(rs));
 	}
 
 	public List<OrderFoodDetailsModel> listOrderData(int id) {
 		final String sql = "select * from order_food_details where ORDER_ID=?";
 		final Object[] params = { id };
-		return jdbcTemplate.query(sql, params, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.query(sql, params, (rs, rowNum) -> convert(rs));
 	}
 
 }
