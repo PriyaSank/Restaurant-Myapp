@@ -1,6 +1,6 @@
 package com.priya.exception;
 
-public class ItemNotFound extends Exception{
+public class ItemNotFound extends Exception {
 
 	/**
 	 * 
@@ -16,5 +16,5 @@ public class ItemNotFound extends Exception{
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

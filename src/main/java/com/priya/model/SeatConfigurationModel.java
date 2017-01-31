@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class SeatConfigurationModel {
-private int id;
-private Boolean status;
+	private int id;
+	private Boolean status;
 
 }

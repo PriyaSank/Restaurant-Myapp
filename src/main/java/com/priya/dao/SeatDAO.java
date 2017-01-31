@@ -1,6 +1,5 @@
 package com.priya.dao;
 
-
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,7 +17,7 @@ public class SeatDAO {
 		int rows = jdbcTemplate.update(sql, params);
 		System.out.println("No of rows inserted: " + rows);
 	}
-	
+
 	public void updateSeatStatus(SeatConfigurationModel seat) {
 
 		String sql = "update seat_configuration set STATUS=? where ID=?";
@@ -36,15 +35,15 @@ public class SeatDAO {
 		System.out.println("No of rows deleted: " + rows);
 
 	}
+
 	public List<SeatConfigurationModel> listAllSeatData() {
 		String sql = "select * from seat_configuration";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			SeatConfigurationModel seat=new SeatConfigurationModel(); 
+			SeatConfigurationModel seat = new SeatConfigurationModel();
 			seat.setId(rs.getInt("ID"));
 			seat.setStatus(rs.getBoolean("STATUS"));
 			return seat;
 		});
-}
+	}
 
-	
 }
