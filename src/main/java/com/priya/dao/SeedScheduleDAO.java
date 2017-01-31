@@ -60,7 +60,7 @@ public class SeedScheduleDAO {
 		seed.setToTime(rs.getTime("TO_TIME").toLocalTime());
 		return seed;
 	}
-	
+
 	public SeedScheduleModel listParticularScheduleData(int id) {
 		String sql = "select ID,NAME,FROM_TIME,TO_TIME from seed_schedule where ID=?";
 		Object[] params = { id };

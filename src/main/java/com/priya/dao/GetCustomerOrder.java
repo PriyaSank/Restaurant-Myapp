@@ -24,8 +24,7 @@ public class GetCustomerOrder {
 		SqlParameterSource in = new MapSqlParameterSource().addValue("i_seat_no", seatNo)
 				.addValue("i_menu_items", itemNames).addValue("i_menu_count", itemCounts);
 		Map<String, Object> execute = call.execute(in);
-		String status = (String) execute.get("message");
-		return status;
+		return (String) execute.get("message");
 
 	}
 
