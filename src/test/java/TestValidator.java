@@ -7,7 +7,8 @@ public class TestValidator {
 		FoodItemModel food = new FoodItemModel();
 		food.setName(" ");
 		ItemValidator itemValidator = new ItemValidator();
-		itemValidator.listByItem(food);
+		itemValidator.validateSave(food);
+		itemValidator.validateDelete(-8);
 
 	}
 }
