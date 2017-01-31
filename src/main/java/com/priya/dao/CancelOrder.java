@@ -14,18 +14,16 @@ import com.priya.util.ConnectionUtil;
 
 public class CancelOrder {
 	private final JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
-	
-	public String cancelOrder(Integer seat_no) {
-        SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_CANCEL_ORDER_V5")
-                .declareParameters(
-                		new SqlParameter("i_seat_no", Types.INTEGER),
-                        new SqlOutParameter("RES", Types.VARCHAR));
-        call.setAccessCallParameterMetaData(false);
-        SqlParameterSource in = new MapSqlParameterSource() .addValue("i_seat_no", seat_no);
-        Map<String, Object> execute = call.execute(in);
-        String status = (String) execute.get("RES");
-        return status;
- 
-    }
-	
+
+	public String cancelOrder(Integer seatNo) {
+		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_CANCEL_ORDER_V5")
+				.declareParameters(new SqlParameter("i_seat_no", Types.INTEGER),
+						new SqlOutParameter("RES", Types.VARCHAR));
+		call.setAccessCallParameterMetaData(false);
+		SqlParameterSource in = new MapSqlParameterSource().addValue("i_seat_no", seatNo);
+		Map<String, Object> execute = call.execute(in);
+		return (String) execute.get("RES");
+
+	}
+
 }
