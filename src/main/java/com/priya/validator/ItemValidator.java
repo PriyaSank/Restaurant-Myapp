@@ -15,7 +15,7 @@ public class ItemValidator {
 
 				throw new ItemNotFound("Item not in menu list");
 			} catch (ItemNotFound e) {
-				logger.log(Level.INFO, "Item not in list exception");
+				logger.log(Level.INFO,"Exception:"+ e);
 			}
 
 		}
